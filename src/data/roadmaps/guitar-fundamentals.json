@@ -1,0 +1,347 @@
+{
+  "meta": {
+    "slug": "guitar-fundamentals",
+    "title": "Guitar Fundamentals",
+    "description": "From holding the guitar to playing your first songs — a complete beginner roadmap covering anatomy, tuning, chords, strumming, scales, and basic techniques.",
+    "level": "beginner",
+    "category": "instrument",
+    "icon": "guitar",
+    "estimatedHours": 60
+  },
+  "nodes": [
+    {
+      "id": "root",
+      "type": "milestone",
+      "label": "Guitar Fundamentals",
+      "description": "Your journey to playing guitar starts here.",
+      "position": { "x": 400, "y": 0 },
+      "group": "root",
+      "details": {
+        "content": "Learning guitar is one of the most rewarding musical pursuits. Whether you want to strum campfire songs, shred solos, or fingerpick folk melodies, every guitarist starts with the same fundamentals.\n\nThis roadmap guides you through the essential skills in a logical order — from holding the instrument for the first time to playing your first songs confidently.",
+        "resources": [
+          { "title": "JustinGuitar — Free Beginner Course", "url": "https://www.justinguitar.com/categories/beginner-guitar-lessons-grade-1", "type": "course" },
+          { "title": "Fender Play — Beginner Guitar", "url": "https://www.fender.com/play", "type": "course" }
+        ]
+      }
+    },
+    {
+      "id": "guitar-anatomy",
+      "type": "topic",
+      "label": "Guitar Anatomy",
+      "description": "Know your instrument: parts of the guitar and how they work.",
+      "position": { "x": 150, "y": 140 },
+      "group": "basics",
+      "details": {
+        "content": "Before you play a single note, get familiar with the parts of your guitar:\n\n**Acoustic Guitar:**\n- **Headstock**: Holds the tuning pegs\n- **Tuning pegs/machines**: Turn to adjust string pitch\n- **Nut**: Slotted piece at the top of the neck that guides the strings\n- **Neck**: The long piece you grip with your fretting hand\n- **Fretboard/Fingerboard**: The flat surface on the neck with metal frets\n- **Frets**: Metal strips that divide the neck into semitone intervals\n- **Body**: The large resonating chamber\n- **Sound hole**: Amplifies the vibration of the strings\n- **Bridge**: Anchors the strings to the body\n- **Saddle**: Sits on the bridge, transmits string vibration to the body\n\n**Electric Guitar** shares most parts but adds pickups, a volume/tone knob, a pickup selector, and an output jack.",
+        "resources": [
+          { "title": "JustinGuitar — Parts of the Guitar", "url": "https://www.justinguitar.com/guitar-lessons/parts-of-the-guitar-bc-112", "type": "article" }
+        ]
+      }
+    },
+    {
+      "id": "holding-posture",
+      "type": "subtopic",
+      "label": "Holding & Posture",
+      "description": "Proper sitting/standing posture and hand positioning.",
+      "position": { "x": 0, "y": 280 },
+      "group": "basics",
+      "details": {
+        "content": "Good posture prevents injury and makes playing easier:\n\n**Sitting:**\n- Rest the guitar on your right thigh (for right-handed players)\n- Keep your back straight, don't hunch over to look at the fretboard\n- The neck should angle slightly upward (~30-45 degrees)\n\n**Fretting Hand (Left):**\n- Thumb behind the neck, roughly opposite your middle finger\n- Curl your fingers so you press strings with your fingertips\n- Keep your wrist relatively straight — avoid extreme bending\n\n**Picking Hand (Right):**\n- Rest your forearm on the upper edge of the guitar body\n- Let your hand hang naturally over the sound hole or pickups\n- Hold the pick between your thumb and the side of your index finger\n\n**Standing:** Use a strap adjusted so the guitar sits at roughly the same position as when sitting.",
+        "resources": [
+          { "title": "JustinGuitar — How to Hold a Guitar", "url": "https://www.justinguitar.com/guitar-lessons/how-to-hold-a-guitar-bc-102", "type": "video" }
+        ]
+      }
+    },
+    {
+      "id": "string-names",
+      "type": "subtopic",
+      "label": "String Names & Numbers",
+      "description": "Learn the 6 strings: E A D G B E (thickest to thinnest).",
+      "position": { "x": 150, "y": 360 },
+      "group": "basics",
+      "details": {
+        "content": "The guitar has 6 strings, numbered from thinnest (1st) to thickest (6th):\n\n| String # | Note | Nickname |\n|----------|------|----------|\n| 1 (thinnest) | E | High E |\n| 2 | B | |\n| 3 | G | |\n| 4 | D | |\n| 5 | A | |\n| 6 (thickest) | E | Low E |\n\n**Mnemonic:** \"**E**ddie **A**te **D**ynamite **G**ood **B**ye **E**ddie\" (6th to 1st)\n\nThis is called **standard tuning**. Nearly all beginner material assumes standard tuning.",
+        "resources": [
+          { "title": "Fender — Guitar String Names", "url": "https://www.fender.com/articles/how-to/string-theory-the-basics-of-guitar-string-names", "type": "article" }
+        ]
+      }
+    },
+    {
+      "id": "tuning",
+      "type": "topic",
+      "label": "Tuning Your Guitar",
+      "description": "Getting in tune using a tuner, app, or by ear.",
+      "position": { "x": 400, "y": 140 },
+      "group": "basics",
+      "details": {
+        "content": "An out-of-tune guitar will sound wrong no matter how well you play. Tuning is a skill you'll use every single time you pick up the instrument.\n\n**Methods:**\n1. **Clip-on tuner** (recommended for beginners) — clips to the headstock, detects vibration. Simple and accurate.\n2. **Tuner app** — GuitarTuna, Fender Tune, or similar. Uses your phone's microphone.\n3. **Tuning by ear** (relative tuning) — use the 5th fret method to tune each string relative to the one below it.\n4. **Online reference pitch** — play a reference note and match by ear.\n\n**Tips:**\n- Always tune UP to the note (if you overshoot, go below and tune up again)\n- Tune every time you play — strings go out of tune from temperature, humidity, and playing\n- New strings stretch and need frequent re-tuning for the first few days",
+        "resources": [
+          { "title": "JustinGuitar — How to Tune Your Guitar", "url": "https://www.justinguitar.com/guitar-lessons/how-to-tune-your-guitar-bc-103", "type": "video" },
+          { "title": "GuitarTuna — Free Tuner App", "url": "https://yousician.com/guitartuna", "type": "tool" }
+        ]
+      }
+    },
+    {
+      "id": "reading-tabs",
+      "type": "topic",
+      "label": "Reading Tablature",
+      "description": "Guitar tab: the guitarist's shorthand for written music.",
+      "position": { "x": 650, "y": 140 },
+      "group": "basics",
+      "details": {
+        "content": "**Tablature (tab)** is a simplified notation system specific to guitar. It tells you which string and fret to play without requiring you to read standard notation.\n\n**How to read tab:**\n- 6 horizontal lines represent the 6 strings (bottom line = low E, top = high E)\n- Numbers on the lines indicate which fret to press\n- 0 = open string (no fret pressed)\n- Numbers stacked vertically = play simultaneously (chord)\n- Numbers in sequence = play one after another (melody)\n\n**Example:**\n```\ne|---0---1---3---|\nB|---1---1---0---|\nG|---0---2---0---|\nD|---2---3---0---|\nA|---3---3---2---|\nE|---x---1---3---|\n  C    F    G\n```\n\n**Common symbols:** h = hammer-on, p = pull-off, / = slide up, \\ = slide down, ~ = vibrato, x = muted string",
+        "resources": [
+          { "title": "Ultimate Guitar — How to Read Tabs", "url": "https://www.ultimate-guitar.com/lessons/for_beginners/how_to_read_tabs.html", "type": "article" },
+          { "title": "Songsterr — Interactive Tabs", "url": "https://www.songsterr.com/", "type": "tool" }
+        ]
+      }
+    },
+    {
+      "id": "open-chords",
+      "type": "topic",
+      "label": "Open Chords",
+      "description": "The essential first chords every guitarist learns.",
+      "position": { "x": 150, "y": 500 },
+      "group": "chords",
+      "details": {
+        "content": "**Open chords** use a mix of fretted and open (unfretted) strings. They're the first chords you should learn because they sound full and are used in thousands of songs.\n\n**The \"first 8\" open chords:**\n- **E major** and **E minor** — easiest to play, great starting point\n- **A major** and **A minor** — three fingers in a row on the 2nd fret\n- **D major** and **D minor** — only strum the top 4 strings\n- **C major** — a stretch but essential\n- **G major** — uses all 6 strings\n\n**Practice tips:**\n- Press close to the fret (not on top of it) for a clean sound\n- Use your fingertips, not the flat pads\n- Strum each string individually to check for buzzing or muting\n- Practice switching between two chords slowly before speeding up",
+        "resources": [
+          { "title": "JustinGuitar — Beginner Chord Library", "url": "https://www.justinguitar.com/guitar-lessons/the-a-chord-bc-114", "type": "course" },
+          { "title": "Marty Music — First 8 Chords (YouTube)", "url": "https://www.youtube.com/watch?v=BSaqr0CByck", "type": "video" }
+        ]
+      }
+    },
+    {
+      "id": "chord-diagrams",
+      "type": "subtopic",
+      "label": "Reading Chord Diagrams",
+      "description": "Understanding chord boxes: dots, X's, O's, and finger numbers.",
+      "position": { "x": 0, "y": 640 },
+      "group": "chords",
+      "details": {
+        "content": "A **chord diagram** (chord box) is a visual map showing where to place your fingers:\n\n- **Vertical lines** = the 6 strings (left = low E, right = high E)\n- **Horizontal lines** = frets\n- **Dots on intersections** = place a finger here\n- **Numbers inside dots** = which finger to use (1=index, 2=middle, 3=ring, 4=pinky)\n- **O above a string** = play this string open\n- **X above a string** = don't play this string\n- **A bar across strings** = barre (press multiple strings with one finger)\n\nLearning to read these quickly will help you look up any chord instantly.",
+        "resources": [
+          { "title": "JustinGuitar — Reading Chord Diagrams", "url": "https://www.justinguitar.com/guitar-lessons/reading-chord-boxes-bc-113", "type": "article" }
+        ]
+      }
+    },
+    {
+      "id": "chord-transitions",
+      "type": "subtopic",
+      "label": "Chord Transitions",
+      "description": "Smoothly switching between chords in time.",
+      "position": { "x": 150, "y": 720 },
+      "group": "chords",
+      "details": {
+        "content": "Switching between chords smoothly is one of the biggest beginner challenges. Here's how to practice:\n\n**The \"One Minute Changes\" Method (JustinGuitar):**\n1. Set a timer for 60 seconds\n2. Switch back and forth between two chords as many times as you can\n3. Count each successful change\n4. Track your number daily — watch it improve\n\n**Tips for faster changes:**\n- Look for **anchor fingers** — fingers that stay on the same string/fret between chords\n- Lift all fingers simultaneously, not one at a time\n- Move your hand as a **unit**, not individual fingers\n- Practice the change in slow motion first, focusing on accuracy\n- Start strumming even if the chord isn't perfect — keep the rhythm going\n\n**Easy transitions to start with:** Em ↔ G, Am ↔ E, D ↔ A, C ↔ G",
+        "resources": [
+          { "title": "JustinGuitar — One Minute Changes", "url": "https://www.justinguitar.com/guitar-lessons/one-minute-changes-bc-115", "type": "video" }
+        ]
+      }
+    },
+    {
+      "id": "strumming",
+      "type": "topic",
+      "label": "Strumming Patterns",
+      "description": "Right-hand rhythm: downstrokes, upstrokes, and common patterns.",
+      "position": { "x": 400, "y": 500 },
+      "group": "rhythm",
+      "details": {
+        "content": "Strumming is what gives a song its feel and groove. Your strumming hand keeps time like a metronome.\n\n**The Fundamentals:**\n- **Downstroke (↓)**: Strum from low E toward high E\n- **Upstroke (↑)**: Strum from high E toward low E (lighter, usually catches top 3-4 strings)\n- Keep your strumming arm moving in a constant down-up motion like a pendulum, even when you skip a strum\n\n**Essential Beginner Patterns (in 4/4 time):**\n1. **All downs**: ↓ ↓ ↓ ↓ (simple and steady)\n2. **Down-up**: ↓↑ ↓↑ ↓↑ ↓↑ (eighth notes)\n3. **Classic folk/pop**: ↓ ↓↑ ↑↓↑ (the most versatile pattern)\n4. **Reggae/ska**: ↑ ↑ ↑ ↑ (accent on the \"and\" beats)\n\n**Key principle:** Your arm is always moving. Missing a strum means your hand passes through the air without touching the strings — it doesn't stop.",
+        "resources": [
+          { "title": "JustinGuitar — Strumming Basics", "url": "https://www.justinguitar.com/guitar-lessons/easy-strumming-patterns-bc-116", "type": "video" },
+          { "title": "Andy Guitar — 10 Strumming Patterns (YouTube)", "url": "https://www.youtube.com/watch?v=DdFnCESmfcg", "type": "video" }
+        ]
+      }
+    },
+    {
+      "id": "rhythm-timing",
+      "type": "subtopic",
+      "label": "Rhythm & Timing",
+      "description": "Playing in time with a metronome and counting beats.",
+      "position": { "x": 300, "y": 640 },
+      "group": "rhythm",
+      "details": {
+        "content": "Playing in time is what separates a beginner from someone who sounds musical. Use a **metronome** from day one.\n\n**Counting in 4/4:**\nCount: \"1 and 2 and 3 and 4 and\"\n- Numbers (1, 2, 3, 4) = downbeats = downstrokes\n- \"and\"s = upbeats = upstrokes\n\n**Metronome Practice:**\n1. Start slow — 60-70 BPM\n2. Strum simple downstrokes on each beat\n3. Add upstrokes on the \"ands\"\n4. Gradually increase tempo only when it feels effortless\n\n**Free metronomes:** Google \"metronome\" (built into search), or use apps like Pro Metronome or Soundbrenner.\n\nTap your foot on beats 1, 2, 3, 4. This physical connection to the beat will transform your playing.",
+        "resources": [
+          { "title": "Google Metronome", "url": "https://www.google.com/search?q=metronome", "type": "tool" },
+          { "title": "JustinGuitar — Using a Metronome", "url": "https://www.justinguitar.com/guitar-lessons/strumming-with-a-metronome-bc-119", "type": "video" }
+        ]
+      }
+    },
+    {
+      "id": "power-chords",
+      "type": "topic",
+      "label": "Power Chords",
+      "description": "Two-note rock chords: movable, simple, and powerful.",
+      "position": { "x": 650, "y": 500 },
+      "group": "chords",
+      "details": {
+        "content": "**Power chords** are the backbone of rock, punk, and metal guitar. They use only two notes (the root and the fifth) and are neither major nor minor — just raw power.\n\n**Shape (root on 6th string):**\n```\ne|-------|\nB|-------|\nG|-------|\nD|---x---|\nA|---x---|\nE|---x---|\n```\nIndex finger on the root, ring finger two frets up on the next string, pinky two frets up on the string after that.\n\n**Why they're great for beginners:**\n- Only 2-3 strings to worry about\n- The shape is **movable** — slide it anywhere on the neck\n- They sound great with distortion\n- Used in thousands of rock songs\n\n**Example:** A5 power chord = index on 5th fret of low E, ring on 7th fret of A string.",
+        "resources": [
+          { "title": "JustinGuitar — Power Chords", "url": "https://www.justinguitar.com/guitar-lessons/power-chords-bc-117", "type": "video" },
+          { "title": "Marty Music — Power Chords (YouTube)", "url": "https://www.youtube.com/watch?v=wUhcXEpMmFU", "type": "video" }
+        ]
+      }
+    },
+    {
+      "id": "barre-chords",
+      "type": "subtopic",
+      "label": "Barre Chords (Intro)",
+      "description": "Using one finger as a movable capo to play any chord anywhere.",
+      "position": { "x": 650, "y": 640 },
+      "group": "chords",
+      "details": {
+        "content": "**Barre chords** are open chord shapes played with your index finger pressing all strings across a fret (acting as a movable nut/capo).\n\n**The F Major barre chord** is usually the first one you'll tackle — and it's notoriously challenging:\n```\ne|--1--|\nB|--1--|\nG|--2--|\nD|--3--|\nA|--3--|\nE|--1--|\n```\n\n**Tips for building barre chord strength:**\n- Use the side/edge of your index finger, not the flat pad\n- Position your index finger close to the fret wire\n- Use your thumb on the back of the neck as a clamp (opposite pressure)\n- Build up gradually — even 30 seconds of practice daily adds strength\n- Try partial barres first (just the top 2-3 strings)\n\n**Why barres matter:** Once you learn the E-shape and A-shape barre, you can play ANY major or minor chord by sliding the shape up the neck.",
+        "resources": [
+          { "title": "JustinGuitar — F Chord Tips", "url": "https://www.justinguitar.com/guitar-lessons/f-chord-bc-118", "type": "video" }
+        ]
+      }
+    },
+    {
+      "id": "pentatonic-scale",
+      "type": "topic",
+      "label": "Pentatonic Scale",
+      "description": "The most important scale for guitar solos and improvisation.",
+      "position": { "x": 150, "y": 860 },
+      "group": "scales",
+      "details": {
+        "content": "The **minor pentatonic scale** is the single most useful scale for a guitarist. It has only 5 notes (penta = five) and sounds good over almost any rock, blues, or pop progression.\n\n**A Minor Pentatonic (Position 1):**\n```\ne|---5---8---|\nB|---5---8---|\nG|---5---7---|\nD|---5---7---|\nA|---5---7---|\nE|---5---8---|\n```\n\n**Why it's essential:**\n- Used by every famous guitarist (Hendrix, Page, Clapton, Slash)\n- Only 5 notes = easy to memorize\n- Works over minor AND major keys (with slight adjustments)\n- The foundation for blues, rock solos, and improvisation\n- The box shape is **movable** — slide it to any root note\n\n**Practice:** Play the pattern ascending and descending, then try making up simple melodies within the shape. Even random notes in the pentatonic tend to sound good!",
+        "resources": [
+          { "title": "JustinGuitar — Pentatonic Scale", "url": "https://www.justinguitar.com/guitar-lessons/the-minor-pentatonic-scale-bg-1301", "type": "course" },
+          { "title": "Ben Eller — Pentatonic for Beginners (YouTube)", "url": "https://www.youtube.com/watch?v=GSBHB-Yqmeg", "type": "video" }
+        ]
+      }
+    },
+    {
+      "id": "major-scale-guitar",
+      "type": "subtopic",
+      "label": "Major Scale on Guitar",
+      "description": "The 7-note scale and its positions on the fretboard.",
+      "position": { "x": 0, "y": 1000 },
+      "group": "scales",
+      "details": {
+        "content": "The **major scale** is the reference scale in Western music. On guitar, you can play it in multiple positions across the fretboard.\n\n**C Major Scale (Open Position):**\n```\ne|-------0-1-3-|\nB|---0-1-3-----|\nG|---0-2-------|\nD|---0-2-3-----|\nA|---0-2-3-----|\nE|---0-1-3-----|\n```\n\n**The CAGED System:** The major scale (and all scales) can be mapped across the fretboard using 5 interconnected positions based on the C, A, G, E, and D open chord shapes. This is a more advanced concept but essential for navigating the entire neck.\n\n**Start with:** Learn the open position major scale, then learn the same scale starting on the 5th fret (A major) to see how the pattern shifts.",
+        "resources": [
+          { "title": "JustinGuitar — Major Scale", "url": "https://www.justinguitar.com/guitar-lessons/the-major-scale-bg-1302", "type": "course" }
+        ]
+      }
+    },
+    {
+      "id": "fretboard-notes",
+      "type": "subtopic",
+      "label": "Fretboard Navigation",
+      "description": "Learning note names across the fretboard.",
+      "position": { "x": 150, "y": 1080 },
+      "group": "scales",
+      "details": {
+        "content": "Knowing where every note lives on the fretboard unlocks the entire instrument. You don't need to memorize all positions at once — build it gradually.\n\n**Start with these landmarks:**\n- Open strings: E A D G B E\n- 5th fret: A D G C E A (matches the next string's open note, except G→B)\n- 7th fret: B E A D F♯ B\n- 12th fret: same as open strings, one octave higher\n\n**The Fret Rule:** Each fret is one half-step (semitone). Fret 1 on the 6th string = F, fret 2 = F♯/G♭, fret 3 = G, etc.\n\n**Practice method:** Pick one string per week. Say the note names out loud as you play each fret from open to the 12th fret. Use apps like Fretboard Learn for quizzes.",
+        "resources": [
+          { "title": "Fretboard Learn App", "url": "https://apps.apple.com/us/app/fretboard-learn/id505754606", "type": "tool" },
+          { "title": "JustinGuitar — Learn the Fretboard", "url": "https://www.justinguitar.com/guitar-lessons/learning-the-fretboard-bg-1308", "type": "video" }
+        ]
+      }
+    },
+    {
+      "id": "fingerpicking",
+      "type": "topic",
+      "label": "Fingerpicking Basics",
+      "description": "Using individual fingers instead of a pick for a softer, intricate sound.",
+      "position": { "x": 400, "y": 860 },
+      "group": "technique",
+      "details": {
+        "content": "**Fingerpicking** (fingerstyle) uses your thumb and fingers to pluck individual strings, creating a richer, more nuanced sound than strumming with a pick.\n\n**Right-hand finger assignments (PIMA):**\n- **p** (pulgar/thumb) = strings 6, 5, 4 (bass notes)\n- **i** (index) = string 3\n- **m** (middle) = string 2\n- **a** (ring) = string 1\n\n**First pattern to learn (Travis Picking foundation):**\nThumb alternates between bass notes (strings 6/5/4) while fingers pluck treble strings (3/2/1).\n\n```\nPattern: p i m a m i\n```\n\nPractice this pattern over a simple chord (C, G, Em) until it feels automatic. Keep your picking hand relaxed — tension is the enemy of good fingerpicking.",
+        "resources": [
+          { "title": "JustinGuitar — Fingerpicking Basics", "url": "https://www.justinguitar.com/guitar-lessons/simple-fingerpicking-patterns-bg-1201", "type": "video" },
+          { "title": "Marcel's Guitar Lessons — Fingerstyle for Beginners (YouTube)", "url": "https://www.youtube.com/watch?v=yTgyKjFkMBk", "type": "video" }
+        ]
+      }
+    },
+    {
+      "id": "hammer-pull",
+      "type": "subtopic",
+      "label": "Hammer-Ons & Pull-Offs",
+      "description": "Left-hand techniques for smooth, connected notes (legato).",
+      "position": { "x": 300, "y": 1000 },
+      "group": "technique",
+      "details": {
+        "content": "**Hammer-ons** and **pull-offs** let you play notes using just your fretting hand, creating a smooth, flowing sound called **legato**.\n\n**Hammer-on:** Pick a note, then \"hammer\" a finger down onto a higher fret on the same string without picking again.\n- Tab notation: `5h7` = pick fret 5, hammer onto fret 7\n\n**Pull-off:** The reverse — start with both fingers on the string, pick the higher note, then \"pull\" that finger off (with a slight sideways pluck) to sound the lower note.\n- Tab notation: `7p5` = pick fret 7, pull off to fret 5\n\n**Practice exercise:**\n```\ne|---5h7-7p5---5h7-7p5---|\n```\nRepeat on each string. Focus on making the hammered/pulled notes as loud and clear as the picked notes.",
+        "resources": [
+          { "title": "JustinGuitar — Hammer-Ons & Pull-Offs", "url": "https://www.justinguitar.com/guitar-lessons/hammer-ons-and-pull-offs-te-401", "type": "video" }
+        ]
+      }
+    },
+    {
+      "id": "slides-bends",
+      "type": "subtopic",
+      "label": "Slides & Bends",
+      "description": "Adding expression by sliding between notes and bending strings.",
+      "position": { "x": 500, "y": 1000 },
+      "group": "technique",
+      "details": {
+        "content": "**Slides** and **bends** add vocal-like expression to your playing.\n\n**Slides:**\n- Pick a note and slide your finger up or down the fretboard to another fret without lifting off\n- Tab notation: `5/7` (slide up), `7\\5` (slide down)\n- Keep consistent pressure throughout the slide\n\n**Bends:**\n- Push a string up (toward the ceiling) or pull it down to raise its pitch\n- A **half-step bend** raises the pitch by one fret\n- A **whole-step bend** raises it by two frets\n- Tab notation: `7b9` = fret 7, bend up to the pitch of fret 9\n\n**Bending tips:**\n- Use multiple fingers behind the bending finger for support (e.g., ring finger bends, index and middle support)\n- Train your ear — the bent note should match the target pitch exactly\n- Start with bends on the 3rd (G) string, which has the most give",
+        "resources": [
+          { "title": "Ben Eller — Bending Technique (YouTube)", "url": "https://www.youtube.com/watch?v=VRaXJDx6W7Q", "type": "video" }
+        ]
+      }
+    },
+    {
+      "id": "first-songs",
+      "type": "topic",
+      "label": "Playing Your First Songs",
+      "description": "Putting it all together — real songs with 2-4 chords.",
+      "position": { "x": 650, "y": 860 },
+      "group": "songs",
+      "details": {
+        "content": "The best way to stay motivated is to play real songs as soon as possible. Many iconic songs use just 2-4 open chords.\n\n**Great first songs (2-3 chords):**\n- \"Horse With No Name\" — Am, Em (2 chords!)\n- \"Knockin' on Heaven's Door\" — G, D, Am, C\n- \"Wish You Were Here\" — Em, G, A (intro riff + chords)\n- \"Zombie\" — Em, C, G, D\n- \"Wonderwall\" — Em, G, D, A (capo 2nd fret)\n- \"Riptide\" — Am, G, C\n\n**How to learn a song:**\n1. Look up the chords (Ultimate Guitar, JustinGuitar)\n2. Practice each chord change in isolation\n3. Strum along with a simple pattern (all downstrokes is fine!)\n4. Play along with the recording at reduced speed (YouTube speed controls)\n5. Gradually add the proper strumming pattern\n\nDon't aim for perfection — aim to play through the whole song without stopping.",
+        "resources": [
+          { "title": "JustinGuitar — Beginner Song Library", "url": "https://www.justinguitar.com/songs", "type": "course" },
+          { "title": "Ultimate Guitar — Chords & Tabs", "url": "https://www.ultimate-guitar.com/", "type": "tool" }
+        ]
+      }
+    },
+    {
+      "id": "song-structure",
+      "type": "subtopic",
+      "label": "Song Structure",
+      "description": "Verse, chorus, bridge — how songs are organized.",
+      "position": { "x": 650, "y": 1000 },
+      "group": "songs",
+      "details": {
+        "content": "Understanding song structure helps you learn songs faster and play with others.\n\n**Common sections:**\n- **Intro**: The opening, often instrumental\n- **Verse**: Tells the story, typically the same chords each time with different lyrics\n- **Chorus**: The catchy, repeated hook — often louder/higher energy\n- **Bridge**: A contrasting section that breaks up repetition\n- **Outro**: The ending, often a fade-out or final chorus\n\n**The most common song form:**\nIntro → Verse → Chorus → Verse → Chorus → Bridge → Chorus → Outro\n\n**Roman numeral shorthand:** Musicians often describe progressions by scale degree: I-V-vi-IV (the \"four chord\" progression behind hundreds of pop hits).\n\nWhen learning a song, map out the sections first. You'll often find the verse and chorus share chords, just in a different order or strum pattern.",
+        "resources": [
+          { "title": "12tone — Song Structure Explained (YouTube)", "url": "https://www.youtube.com/watch?v=FY8SwIvxj8o", "type": "video" }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    { "id": "e-root-anatomy", "source": "root", "target": "guitar-anatomy" },
+    { "id": "e-root-tuning", "source": "root", "target": "tuning" },
+    { "id": "e-root-tabs", "source": "root", "target": "reading-tabs" },
+    { "id": "e-anatomy-holding", "source": "guitar-anatomy", "target": "holding-posture" },
+    { "id": "e-anatomy-strings", "source": "guitar-anatomy", "target": "string-names" },
+    { "id": "e-holding-strings", "source": "holding-posture", "target": "string-names" },
+    { "id": "e-strings-tuning", "source": "string-names", "target": "tuning" },
+    { "id": "e-tuning-chords", "source": "tuning", "target": "open-chords" },
+    { "id": "e-tuning-strumming", "source": "tuning", "target": "strumming" },
+    { "id": "e-tabs-chords", "source": "reading-tabs", "target": "open-chords" },
+    { "id": "e-tabs-power", "source": "reading-tabs", "target": "power-chords" },
+    { "id": "e-chords-diagrams", "source": "open-chords", "target": "chord-diagrams" },
+    { "id": "e-chords-transitions", "source": "open-chords", "target": "chord-transitions" },
+    { "id": "e-diagrams-transitions", "source": "chord-diagrams", "target": "chord-transitions" },
+    { "id": "e-strumming-rhythm", "source": "strumming", "target": "rhythm-timing" },
+    { "id": "e-power-barre", "source": "power-chords", "target": "barre-chords" },
+    { "id": "e-transitions-pentatonic", "source": "chord-transitions", "target": "pentatonic-scale" },
+    { "id": "e-rhythm-fingerpicking", "source": "rhythm-timing", "target": "fingerpicking" },
+    { "id": "e-pentatonic-major", "source": "pentatonic-scale", "target": "major-scale-guitar" },
+    { "id": "e-pentatonic-fretboard", "source": "pentatonic-scale", "target": "fretboard-notes" },
+    { "id": "e-major-fretboard", "source": "major-scale-guitar", "target": "fretboard-notes" },
+    { "id": "e-fingerpicking-hammer", "source": "fingerpicking", "target": "hammer-pull" },
+    { "id": "e-fingerpicking-slides", "source": "fingerpicking", "target": "slides-bends" },
+    { "id": "e-barre-songs", "source": "barre-chords", "target": "first-songs" },
+    { "id": "e-strumming-songs", "source": "strumming", "target": "first-songs" },
+    { "id": "e-songs-structure", "source": "first-songs", "target": "song-structure" },
+    { "id": "e-pentatonic-songs", "source": "pentatonic-scale", "target": "first-songs" }
+  ]
+}
