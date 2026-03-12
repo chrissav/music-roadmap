@@ -35,6 +35,7 @@ export interface RoadmapEdgeData {
   source: string;
   target: string;
   animated?: boolean;
+  style?: "spine" | "branch";
 }
 
 export interface RoadmapMeta {

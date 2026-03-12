@@ -14,7 +14,7 @@ export function RoadmapEdge({
   targetY,
   sourcePosition,
   targetPosition,
-  style,
+  data,
 }: EdgeProps) {
   const [edgePath] = getSmoothStepPath({
     sourceX,
@@ -26,14 +26,18 @@ export function RoadmapEdge({
     borderRadius: 16,
   });
 
+  const edgeStyle = (data as Record<string, unknown> | undefined)?.edgeStyle;
+  const isSpine = edgeStyle === "spine";
+
   return (
     <BaseEdge
       id={id}
       path={edgePath}
       style={{
-        stroke: "var(--border)",
-        strokeWidth: 2,
-        ...style,
+        stroke: isSpine ? "var(--primary)" : "var(--border)",
+        strokeWidth: isSpine ? 2.5 : 1.5,
+        strokeDasharray: isSpine ? undefined : "6 4",
+        opacity: isSpine ? 0.4 : 0.8,
       }}
     />
   );

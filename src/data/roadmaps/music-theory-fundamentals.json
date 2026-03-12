@@ -14,7 +14,7 @@
       "type": "milestone",
       "label": "Music Theory Fundamentals",
       "description": "Your journey into understanding how music works starts here.",
-      "position": { "x": 400, "y": 0 },
+      "position": { "x": 275, "y": 0 },
       "group": "root",
       "details": {
         "content": "Music theory is the study of the practices and possibilities of music. It provides a framework for understanding how music is constructed and why certain combinations of sounds are pleasing to the ear.\n\nThis roadmap covers the foundational concepts every musician should know, regardless of their instrument or genre.",
@@ -29,7 +29,7 @@
       "type": "topic",
       "label": "Notes & Pitch",
       "description": "Understanding musical notes, pitch, and the chromatic scale.",
-      "position": { "x": 150, "y": 140 },
+      "position": { "x": 300, "y": 110 },
       "group": "basics",
       "details": {
         "content": "Musical notes are the building blocks of all music. A **pitch** is a specific sound frequency, and we give these frequencies letter names (A through G). Together, these form the foundation for melodies, chords, and everything else in music.\n\nThe **chromatic scale** contains all 12 unique pitches in Western music, each a half-step apart.",
@@ -44,7 +44,7 @@
       "type": "subtopic",
       "label": "The Musical Alphabet",
       "description": "The seven natural notes: A B C D E F G.",
-      "position": { "x": 0, "y": 280 },
+      "position": { "x": 120, "y": 200 },
       "group": "basics",
       "details": {
         "content": "Western music uses seven letter names — **A, B, C, D, E, F, G** — that repeat in a cycle. After G, you return to A at a higher octave.\n\nThese seven notes correspond to the white keys on a piano. The distance between each adjacent letter is not always the same — most are a whole step apart, except B-C and E-F which are a half step.",
@@ -58,7 +58,7 @@
       "type": "subtopic",
       "label": "Sharps & Flats",
       "description": "Accidentals that raise or lower pitch by a half step.",
-      "position": { "x": 150, "y": 360 },
+      "position": { "x": 520, "y": 200 },
       "group": "basics",
       "details": {
         "content": "A **sharp (♯)** raises a note by one half step. A **flat (♭)** lowers a note by one half step. A **natural (♮)** cancels a sharp or flat.\n\nThese symbols are called **accidentals**. They give us access to all 12 chromatic pitches from the 7 natural notes. For example, the note between C and D can be called either C♯ or D♭ — these are **enharmonic equivalents** (same sound, different names).",
@@ -72,7 +72,7 @@
       "type": "topic",
       "label": "Rhythm & Meter",
       "description": "How music is organized in time through beats and patterns.",
-      "position": { "x": 650, "y": 140 },
+      "position": { "x": 300, "y": 310 },
       "group": "rhythm",
       "details": {
         "content": "**Rhythm** is the pattern of sounds and silences in time. It's what makes music move and groove. **Meter** is the recurring pattern of strong and weak beats that gives music its pulse.\n\nUnderstanding rhythm is just as important as understanding pitch — it's literally half of what makes music, music.",
@@ -87,7 +87,7 @@
       "type": "subtopic",
       "label": "Note Values",
       "description": "Whole, half, quarter, eighth, and sixteenth notes and rests.",
-      "position": { "x": 550, "y": 280 },
+      "position": { "x": 120, "y": 400 },
       "group": "rhythm",
       "details": {
         "content": "Note values tell us how long a note (or silence) lasts relative to other notes:\n\n- **Whole note** = 4 beats\n- **Half note** = 2 beats\n- **Quarter note** = 1 beat\n- **Eighth note** = 1/2 beat\n- **Sixteenth note** = 1/4 beat\n\nEach type also has a corresponding **rest** symbol indicating the same duration of silence. A **dot** after a note increases its value by 50%.",
@@ -101,7 +101,7 @@
       "type": "subtopic",
       "label": "Time Signatures",
       "description": "How beats are grouped into measures (4/4, 3/4, 6/8, etc.).",
-      "position": { "x": 750, "y": 280 },
+      "position": { "x": 520, "y": 400 },
       "group": "rhythm",
       "details": {
         "content": "A **time signature** tells you how many beats are in each measure and what note value gets one beat.\n\n- **4/4** (\"common time\") — 4 quarter-note beats per measure. The most common in popular music.\n- **3/4** (\"waltz time\") — 3 quarter-note beats per measure.\n- **6/8** — 6 eighth-note beats, felt in 2 groups of 3 (compound meter).\n\nThe top number = how many beats. The bottom number = what note value equals one beat.",
@@ -116,7 +116,7 @@
       "type": "topic",
       "label": "Scales",
       "description": "Ordered sequences of notes that form the basis of melody and harmony.",
-      "position": { "x": 150, "y": 500 },
+      "position": { "x": 300, "y": 510 },
       "group": "scales",
       "details": {
         "content": "A **scale** is a set of notes arranged in order of pitch, spanning one octave. Scales provide the raw material for melodies and chords.\n\nDifferent scale patterns produce different moods and colors. The two most fundamental scales in Western music are the **major** and **minor** scales.",
@@ -130,7 +130,7 @@
       "type": "subtopic",
       "label": "Major Scales",
       "description": "The bright, happy foundation: W-W-H-W-W-W-H pattern.",
-      "position": { "x": 0, "y": 640 },
+      "position": { "x": 120, "y": 600 },
       "group": "scales",
       "details": {
         "content": "The **major scale** follows the interval pattern: **Whole-Whole-Half-Whole-Whole-Whole-Half** (W-W-H-W-W-W-H).\n\nStarting from C, this gives us: **C D E F G A B C** — all natural notes, which is why C major is the easiest scale to learn on piano.\n\nMajor scales sound bright, happy, and resolved. Every major key uses this same pattern starting from a different root note.",
@@ -144,7 +144,7 @@
       "type": "subtopic",
       "label": "Minor Scales",
       "description": "The darker, more emotional scale: natural, harmonic, and melodic forms.",
-      "position": { "x": 150, "y": 720 },
+      "position": { "x": 520, "y": 600 },
       "group": "scales",
       "details": {
         "content": "**Minor scales** have a darker, more melancholic sound. There are three forms:\n\n1. **Natural minor**: W-H-W-W-H-W-W (e.g., A B C D E F G A)\n2. **Harmonic minor**: Raises the 7th degree by a half step for a stronger pull to the tonic\n3. **Melodic minor**: Raises both the 6th and 7th going up, reverts to natural minor going down\n\nEvery major key has a **relative minor** that shares the same notes (e.g., C major / A minor).",
@@ -159,7 +159,7 @@
       "type": "subtopic",
       "label": "Chromatic Scale",
       "description": "All 12 pitches in sequence, each a half step apart.",
-      "position": { "x": 0, "y": 800 },
+      "position": { "x": 300, "y": 700 },
       "group": "scales",
       "details": {
         "content": "The **chromatic scale** includes all 12 pitches available in Western music, each separated by a **half step** (semitone).\n\nC → C♯/D♭ → D → D♯/E♭ → E → F → F♯/G♭ → G → G♯/A♭ → A → A♯/B♭ → B → C\n\nWhile rarely used as a key center, the chromatic scale is the \"parent\" of all other Western scales — every scale is a subset of these 12 notes.",
@@ -173,7 +173,7 @@
       "type": "topic",
       "label": "Intervals",
       "description": "The distance between two notes — the DNA of melody and harmony.",
-      "position": { "x": 400, "y": 500 },
+      "position": { "x": 300, "y": 800 },
       "group": "intervals",
       "details": {
         "content": "An **interval** is the distance in pitch between two notes. Intervals are the fundamental building blocks of both melody (successive intervals) and harmony (simultaneous intervals).\n\nIntervals are named by two qualities:\n- **Number**: the count of letter names spanned (2nd, 3rd, 4th, etc.)\n- **Quality**: the precise size (major, minor, perfect, augmented, diminished)\n\nKey intervals to know:\n- **Perfect unison** (0 half steps), **minor 2nd** (1), **major 2nd** (2)\n- **Minor 3rd** (3), **Major 3rd** (4), **Perfect 4th** (5)\n- **Tritone** (6), **Perfect 5th** (7)\n- **Minor 6th** (8), **Major 6th** (9)\n- **Minor 7th** (10), **Major 7th** (11), **Octave** (12)",
@@ -188,7 +188,7 @@
       "type": "topic",
       "label": "Chords",
       "description": "Three or more notes sounding together to create harmony.",
-      "position": { "x": 650, "y": 500 },
+      "position": { "x": 300, "y": 900 },
       "group": "chords",
       "details": {
         "content": "A **chord** is a group of three or more notes played simultaneously. Chords are the backbone of harmony and provide the harmonic context for melodies.\n\nChords are built by stacking intervals (usually thirds) on top of a root note. The type of intervals used determines the chord quality (major, minor, diminished, augmented).",
@@ -202,7 +202,7 @@
       "type": "subtopic",
       "label": "Triads",
       "description": "Three-note chords: major, minor, diminished, and augmented.",
-      "position": { "x": 550, "y": 640 },
+      "position": { "x": 120, "y": 990 },
       "group": "chords",
       "details": {
         "content": "A **triad** is a three-note chord built by stacking two thirds:\n\n- **Major triad** = Root + Major 3rd + Perfect 5th (e.g., C-E-G) — sounds bright and stable\n- **Minor triad** = Root + Minor 3rd + Perfect 5th (e.g., C-E♭-G) — sounds dark and emotional\n- **Diminished triad** = Root + Minor 3rd + Diminished 5th (e.g., C-E♭-G♭) — sounds tense\n- **Augmented triad** = Root + Major 3rd + Augmented 5th (e.g., C-E-G♯) — sounds mysterious\n\nTriads form the basis of most popular music harmony.",
@@ -216,7 +216,7 @@
       "type": "subtopic",
       "label": "Seventh Chords",
       "description": "Four-note chords adding richness and tension.",
-      "position": { "x": 750, "y": 640 },
+      "position": { "x": 520, "y": 990 },
       "group": "chords",
       "details": {
         "content": "**Seventh chords** add a fourth note — the 7th — on top of a triad, creating richer, more complex harmony:\n\n- **Major 7th** (Cmaj7): Major triad + Major 7th — smooth, jazzy\n- **Dominant 7th** (C7): Major triad + Minor 7th — bluesy, wants to resolve\n- **Minor 7th** (Cm7): Minor triad + Minor 7th — mellow, soulful\n- **Half-diminished 7th** (Cø7): Diminished triad + Minor 7th\n- **Fully-diminished 7th** (C°7): Diminished triad + Diminished 7th\n\nSeventh chords are essential in jazz, R&B, and classical music.",
@@ -231,7 +231,7 @@
       "type": "topic",
       "label": "Key Signatures",
       "description": "The set of sharps or flats that define a musical key.",
-      "position": { "x": 400, "y": 780 },
+      "position": { "x": 300, "y": 1100 },
       "group": "keys",
       "details": {
         "content": "A **key signature** is a set of sharps (♯) or flats (♭) placed at the beginning of a staff to indicate the key of the music. It tells you which notes are consistently altered throughout the piece.\n\nKey signatures eliminate the need to write accidentals on every altered note. There are 15 possible key signatures (7 sharp keys, 7 flat keys, and C major / A minor with no sharps or flats).",
@@ -245,7 +245,7 @@
       "type": "subtopic",
       "label": "Circle of Fifths",
       "description": "The master diagram showing relationships between all 12 keys.",
-      "position": { "x": 400, "y": 920 },
+      "position": { "x": 300, "y": 1190 },
       "group": "keys",
       "details": {
         "content": "The **Circle of Fifths** is a visual diagram arranging all 12 keys in a circle, each a perfect fifth apart:\n\nC → G → D → A → E → B → F♯/G♭ → D♭ → A♭ → E♭ → B♭ → F → back to C\n\n**Why it matters:**\n- Moving clockwise adds one sharp\n- Moving counter-clockwise adds one flat\n- Adjacent keys are closely related (share many notes)\n- Opposite keys are most distant\n- Inner circle shows relative minor keys\n\nIt's arguably the single most useful diagram in all of music theory.",
@@ -260,7 +260,7 @@
       "type": "topic",
       "label": "Reading Sheet Music",
       "description": "Translating written notation into musical sounds.",
-      "position": { "x": 650, "y": 780 },
+      "position": { "x": 300, "y": 1290 },
       "group": "notation",
       "details": {
         "content": "**Sheet music** is the standard way to write down music in Western tradition. It visually represents pitch (vertical position on the staff), rhythm (note shapes), and expression (dynamic markings, articulations).\n\nLearning to read sheet music opens up centuries of musical literature and makes it possible to communicate musical ideas precisely with other musicians.",
@@ -274,7 +274,7 @@
       "type": "subtopic",
       "label": "Treble & Bass Clef",
       "description": "The two main clefs that define note positions on the staff.",
-      "position": { "x": 550, "y": 920 },
+      "position": { "x": 120, "y": 1380 },
       "group": "notation",
       "details": {
         "content": "A **clef** is a symbol at the beginning of a staff that assigns specific pitches to the lines and spaces.\n\n**Treble Clef (G Clef):** Used for higher-pitched instruments and voices. The lines spell E-G-B-D-F (\"Every Good Boy Does Fine\") and spaces spell F-A-C-E.\n\n**Bass Clef (F Clef):** Used for lower-pitched instruments. Lines: G-B-D-F-A (\"Good Boys Do Fine Always\"), spaces: A-C-E-G.\n\nTogether, the treble and bass clefs cover the full range of a piano (the **Grand Staff**).",
@@ -288,7 +288,7 @@
       "type": "subtopic",
       "label": "Notation Basics",
       "description": "Staff lines, note heads, stems, flags, and dynamic markings.",
-      "position": { "x": 750, "y": 920 },
+      "position": { "x": 520, "y": 1380 },
       "group": "notation",
       "details": {
         "content": "The essential elements of written music notation:\n\n- **Staff**: 5 horizontal lines and 4 spaces where notes are placed\n- **Note head**: Filled (quarter/eighth) or hollow (half/whole) oval indicating pitch\n- **Stem**: Vertical line attached to the note head\n- **Flags/Beams**: Attached to stems to indicate eighth notes and shorter\n- **Rests**: Symbols indicating silence for specific durations\n- **Bar lines**: Vertical lines dividing the staff into measures\n- **Dynamics**: Symbols like *p* (piano/soft), *f* (forte/loud), crescendo, decrescendo\n- **Ledger lines**: Short lines above or below the staff for notes outside its range",
@@ -300,29 +300,25 @@
     }
   ],
   "edges": [
-    { "id": "e-root-notes", "source": "root", "target": "notes-pitch" },
-    { "id": "e-root-rhythm", "source": "root", "target": "rhythm-meter" },
-    { "id": "e-notes-alphabet", "source": "notes-pitch", "target": "musical-alphabet" },
-    { "id": "e-notes-sharps", "source": "notes-pitch", "target": "sharps-flats" },
-    { "id": "e-alphabet-sharps", "source": "musical-alphabet", "target": "sharps-flats" },
-    { "id": "e-rhythm-values", "source": "rhythm-meter", "target": "note-values" },
-    { "id": "e-rhythm-time", "source": "rhythm-meter", "target": "time-signatures" },
-    { "id": "e-values-time", "source": "note-values", "target": "time-signatures" },
-    { "id": "e-sharps-scales", "source": "sharps-flats", "target": "scales" },
-    { "id": "e-scales-major", "source": "scales", "target": "major-scales" },
-    { "id": "e-scales-minor", "source": "scales", "target": "minor-scales" },
-    { "id": "e-scales-chromatic", "source": "scales", "target": "chromatic-scale" },
-    { "id": "e-major-minor", "source": "major-scales", "target": "minor-scales" },
-    { "id": "e-scales-intervals", "source": "scales", "target": "intervals" },
-    { "id": "e-intervals-chords", "source": "intervals", "target": "chords" },
-    { "id": "e-chords-triads", "source": "chords", "target": "triads" },
-    { "id": "e-chords-seventh", "source": "chords", "target": "seventh-chords" },
-    { "id": "e-triads-seventh", "source": "triads", "target": "seventh-chords" },
-    { "id": "e-scales-keys", "source": "scales", "target": "key-signatures" },
-    { "id": "e-keys-circle", "source": "key-signatures", "target": "circle-of-fifths" },
-    { "id": "e-time-reading", "source": "time-signatures", "target": "reading-sheet-music" },
-    { "id": "e-keys-reading", "source": "key-signatures", "target": "reading-sheet-music" },
-    { "id": "e-reading-clefs", "source": "reading-sheet-music", "target": "clefs" },
-    { "id": "e-reading-notation", "source": "reading-sheet-music", "target": "notation-basics" }
+    { "id": "e-root-notes", "source": "root", "target": "notes-pitch", "style": "spine" },
+    { "id": "e-notes-rhythm", "source": "notes-pitch", "target": "rhythm-meter", "style": "spine" },
+    { "id": "e-rhythm-scales", "source": "rhythm-meter", "target": "scales", "style": "spine" },
+    { "id": "e-scales-intervals", "source": "scales", "target": "intervals", "style": "spine" },
+    { "id": "e-intervals-chords", "source": "intervals", "target": "chords", "style": "spine" },
+    { "id": "e-chords-keys", "source": "chords", "target": "key-signatures", "style": "spine" },
+    { "id": "e-keys-reading", "source": "key-signatures", "target": "reading-sheet-music", "style": "spine" },
+
+    { "id": "e-notes-alphabet", "source": "notes-pitch", "target": "musical-alphabet", "style": "branch" },
+    { "id": "e-notes-sharps", "source": "notes-pitch", "target": "sharps-flats", "style": "branch" },
+    { "id": "e-rhythm-values", "source": "rhythm-meter", "target": "note-values", "style": "branch" },
+    { "id": "e-rhythm-time", "source": "rhythm-meter", "target": "time-signatures", "style": "branch" },
+    { "id": "e-scales-major", "source": "scales", "target": "major-scales", "style": "branch" },
+    { "id": "e-scales-minor", "source": "scales", "target": "minor-scales", "style": "branch" },
+    { "id": "e-scales-chromatic", "source": "scales", "target": "chromatic-scale", "style": "branch" },
+    { "id": "e-chords-triads", "source": "chords", "target": "triads", "style": "branch" },
+    { "id": "e-chords-seventh", "source": "chords", "target": "seventh-chords", "style": "branch" },
+    { "id": "e-keys-circle", "source": "key-signatures", "target": "circle-of-fifths", "style": "branch" },
+    { "id": "e-reading-clefs", "source": "reading-sheet-music", "target": "clefs", "style": "branch" },
+    { "id": "e-reading-notation", "source": "reading-sheet-music", "target": "notation-basics", "style": "branch" }
   ]
 }

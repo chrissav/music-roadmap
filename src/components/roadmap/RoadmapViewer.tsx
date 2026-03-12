@@ -59,6 +59,7 @@ function buildFlowEdges(roadmap: RoadmapDefinition): Edge[] {
     target: e.target,
     type: "roadmapEdge",
     animated: e.animated ?? false,
+    data: { edgeStyle: e.style ?? "spine" },
   }));
 }
 
@@ -142,7 +143,7 @@ export function RoadmapViewer({ roadmap }: { roadmap: RoadmapDefinition }) {
             edgeTypes={edgeTypes}
             onNodeClick={onNodeClick}
             fitView
-            fitViewOptions={{ padding: 0.3 }}
+            fitViewOptions={{ padding: 0.1 }}
             nodesDraggable={false}
             nodesConnectable={false}
             elementsSelectable
