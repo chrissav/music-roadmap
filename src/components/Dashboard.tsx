@@ -1,17 +1,39 @@
 "use client";
 
-import { Music, BookOpen, Guitar, Headphones } from "lucide-react";
+import { useState } from "react";
+import { Music, BookOpen, Guitar, Headphones, Ear } from "lucide-react";
 import { RoadmapCard } from "@/components/ui/RoadmapCard";
 import { roadmaps } from "@/data";
+import type { RoadmapCategory } from "@/lib/types";
 
-const CATEGORY_FILTERS = [
+type FilterValue = "all" | RoadmapCategory;
+
+const CATEGORY_FILTERS: { label: string; value: FilterValue; icon: typeof Music }[] = [
   { label: "All", value: "all", icon: BookOpen },
   { label: "Theory", value: "theory", icon: Music },
   { label: "Instruments", value: "instrument", icon: Guitar },
   { label: "Production", value: "production", icon: Headphones },
+  { label: "Ear Training", value: "ear-training", icon: Ear },
+];
+
+const PLACEHOLDER_ROADMAPS: { title: string; category: RoadmapCategory }[] = [
+  { title: "Ear Training Basics", category: "ear-training" },
+  { title: "Music Production 101", category: "production" },
 ];
 
 export function Dashboard() {
+  const [activeFilter, setActiveFilter] = useState<FilterValue>("all");
+
+  const filteredRoadmaps =
+    activeFilter === "all"
+      ? roadmaps
+      : roadmaps.filter((r) => r.meta.category === activeFilter);
+
+  const filteredPlaceholders =
+    activeFilter === "all"
+      ? PLACEHOLDER_ROADMAPS
+      : PLACEHOLDER_ROADMAPS.filter((p) => p.category === activeFilter);
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
       {/* Hero */}
@@ -28,16 +50,17 @@ export function Dashboard() {
         </p>
       </div>
 
-      {/* Category Filters (visual only for now — functional when more roadmaps exist) */}
-      <div className="mb-8 flex justify-center gap-2">
+      {/* Category Filters */}
+      <div className="mb-8 flex flex-wrap justify-center gap-2">
         {CATEGORY_FILTERS.map((cat) => {
           const Icon = cat.icon;
-          const isAll = cat.value === "all";
+          const isActive = activeFilter === cat.value;
           return (
             <button
               key={cat.value}
+              onClick={() => setActiveFilter(cat.value)}
               className={`flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                isAll
+                isActive
                   ? "bg-primary text-primary-foreground"
                   : "bg-accent text-accent-foreground hover:bg-accent/80"
               }`}
@@ -51,7 +74,7 @@ export function Dashboard() {
 
       {/* Roadmap Cards Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {roadmaps.map((roadmap) => (
+        {filteredRoadmaps.map((roadmap) => (
           <RoadmapCard
             key={roadmap.meta.slug}
             meta={roadmap.meta}
@@ -59,26 +82,29 @@ export function Dashboard() {
           />
         ))}
 
-        {/* Placeholder cards for future roadmaps */}
-        {["Ear Training Basics", "Music Production 101"].map(
-          (title) => (
-            <div
-              key={title}
-              className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-border p-8 text-center"
-            >
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
-                <Music size={20} className="text-muted-foreground" />
-              </div>
-              <h3 className="mt-3 text-sm font-medium text-muted-foreground">
-                {title}
-              </h3>
-              <p className="mt-1 text-xs text-muted-foreground/60">
-                Coming Soon
-              </p>
+        {filteredPlaceholders.map((placeholder) => (
+          <div
+            key={placeholder.title}
+            className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-border p-8 text-center"
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
+              <Music size={20} className="text-muted-foreground" />
             </div>
-          )
-        )}
+            <h3 className="mt-3 text-sm font-medium text-muted-foreground">
+              {placeholder.title}
+            </h3>
+            <p className="mt-1 text-xs text-muted-foreground/60">
+              Coming Soon
+            </p>
+          </div>
+        ))}
       </div>
+
+      {filteredRoadmaps.length === 0 && filteredPlaceholders.length === 0 && (
+        <div className="py-16 text-center text-muted-foreground">
+          No roadmaps in this category yet. Check back soon!
+        </div>
+      )}
     </div>
   );
 }
