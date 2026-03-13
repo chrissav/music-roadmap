@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Music } from "lucide-react";
+import { Music, Plus } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar() {
@@ -18,6 +18,12 @@ export function Navbar() {
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             Roadmaps
+          </Link>
+          <Link
+            href="/roadmap/editor"
+            className="flex items-center gap-1 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            <Plus size={14} /> Create
           </Link>
           <ThemeToggle />
         </div>

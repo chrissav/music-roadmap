@@ -30,9 +30,11 @@ const LEVEL_COLORS: Record<string, string> = {
 export function RoadmapCard({
   meta,
   nodeCount,
+  href,
 }: {
   meta: RoadmapMeta;
   nodeCount: number;
+  href?: string;
 }) {
   const [percentage, setPercentage] = useState(0);
 
@@ -45,7 +47,7 @@ export function RoadmapCard({
 
   return (
     <Link
-      href={`/roadmap/${meta.slug}`}
+      href={href ?? `/roadmap/${meta.slug}`}
       className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-primary/50 hover:shadow-lg"
     >
       {/* Top accent bar */}

@@ -73,3 +73,17 @@ body {
 .react-flow__controls button svg {
   fill: var(--foreground) !important;
 }
+
+/* Show handles in editor mode for connecting nodes */
+.roadmap-editor .react-flow__handle {
+  opacity: 1 !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: var(--primary) !important;
+  border: 2px solid var(--background) !important;
+  transition: transform 0.15s ease;
+}
+
+.roadmap-editor .react-flow__handle:hover {
+  transform: scale(1.5);
+}
