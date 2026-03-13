@@ -373,7 +373,7 @@ function MetaEditor({
             { value: "instrument", label: "Instrument" },
             { value: "production", label: "Production" },
             { value: "composition", label: "Composition" },
-            { value: "ear-training", label: "Ear Training" },
+            { value: "history", label: "History" },
           ]}
         />
       </div>

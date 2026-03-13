@@ -7,7 +7,7 @@ import {
   BookOpen,
   Guitar,
   Headphones,
-  Ear,
+  History,
   Plus,
   Pencil,
   Trash2,
@@ -31,11 +31,11 @@ const CATEGORY_FILTERS: {
   { label: "Theory", value: "theory", icon: Music },
   { label: "Instruments", value: "instrument", icon: Guitar },
   { label: "Production", value: "production", icon: Headphones },
-  { label: "Ear Training", value: "ear-training", icon: Ear },
+  { label: "History", value: "history", icon: History },
 ];
 
 const PLACEHOLDER_ROADMAPS: { title: string; category: RoadmapCategory }[] = [
-  { title: "Ear Training Basics", category: "ear-training" },
+  { title: "Music History 101", category: "history" },
   { title: "Music Production 101", category: "production" },
 ];
 

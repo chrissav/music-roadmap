@@ -7,7 +7,7 @@ export type RoadmapCategory =
   | "instrument"
   | "production"
   | "composition"
-  | "ear-training";
+  | "history";
 
 export interface Resource {
   title: string;

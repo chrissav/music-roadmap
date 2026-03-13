@@ -29,6 +29,7 @@ import { RoadmapNode, type RoadmapNodePayload } from "./RoadmapNode";
 import { RoadmapEdge } from "./RoadmapEdge";
 import { NodePalette } from "./NodePalette";
 import { PropertyPanel } from "./PropertyPanel";
+import { AIChatPanel } from "./AIChatPanel";
 import {
   getCustomRoadmap,
   saveCustomRoadmap,
@@ -281,6 +282,28 @@ export function RoadmapEditor({ editSlug }: { editSlug?: string }) {
     setSelectedEdgeId(null);
   }, []);
 
+  const handleAIAddNodes = useCallback((newNodes: RoadmapNodeData[]) => {
+    setRoadmapNodes((prev) => [...prev, ...newNodes]);
+  }, []);
+
+  const handleAIAddEdges = useCallback((newEdges: RoadmapEdgeData[]) => {
+    setRoadmapEdges((prev) => [...prev, ...newEdges]);
+  }, []);
+
+  const handleAIUpdateNodes = useCallback((updated: RoadmapNodeData[]) => {
+    setRoadmapNodes((prev) => {
+      const updateMap = new Map(updated.map((n) => [n.id, n]));
+      return prev.map((n) => updateMap.get(n.id) ?? n);
+    });
+  }, []);
+
+  const handleAIUpdateMeta = useCallback(
+    (update: Partial<Pick<RoadmapMeta, "title" | "description">>) => {
+      setMeta((prev) => ({ ...prev, ...update }));
+    },
+    []
+  );
+
   const handleSave = useCallback(() => {
     if (!meta.title.trim()) {
       setErrorMsg("Title is required");
@@ -498,6 +521,16 @@ export function RoadmapEditor({ editSlug }: { editSlug?: string }) {
           onUpdateEdge={handleUpdateEdge}
           onDeleteEdge={handleDeleteEdge}
           onUpdateMeta={setMeta}
+        />
+
+        <AIChatPanel
+          currentNodes={roadmapNodes}
+          currentEdges={roadmapEdges}
+          meta={meta}
+          onAddNodes={handleAIAddNodes}
+          onAddEdges={handleAIAddEdges}
+          onUpdateNodes={handleAIUpdateNodes}
+          onUpdateMeta={handleAIUpdateMeta}
         />
       </div>
     </div>

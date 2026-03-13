@@ -6,7 +6,7 @@ import {
   Guitar,
   Mic2,
   Headphones,
-  Ear,
+  History,
   ArrowRight,
 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ const CATEGORY_ICONS: Record<string, typeof Music> = {
   instrument: Guitar,
   production: Headphones,
   composition: Mic2,
-  "ear-training": Ear,
+  history: History,
 };
 
 const LEVEL_COLORS: Record<string, string> = {
