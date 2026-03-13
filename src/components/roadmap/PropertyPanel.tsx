@@ -396,7 +396,7 @@ function MetaEditor({
   );
 }
 
-export function PropertyPanel(props: PropertyPanelProps) {
+export function PropertyPanel(props: PropertyPanelProps & { mobile?: boolean }) {
   const {
     selectedNode,
     selectedEdge,
@@ -406,10 +406,17 @@ export function PropertyPanel(props: PropertyPanelProps) {
     onUpdateEdge,
     onDeleteEdge,
     onUpdateMeta,
+    mobile,
   } = props;
 
   return (
-    <div className="flex w-72 shrink-0 flex-col overflow-y-auto border-l border-border bg-card p-3">
+    <div
+      className={
+        mobile
+          ? "flex flex-col overflow-y-auto p-3"
+          : "hidden w-72 shrink-0 flex-col overflow-y-auto border-l border-border bg-card p-3 md:flex"
+      }
+    >
       {selectedNode ? (
         <NodeEditor
           node={selectedNode}

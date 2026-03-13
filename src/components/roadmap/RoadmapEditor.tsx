@@ -24,6 +24,10 @@ import {
   Eye,
   AlertCircle,
   Check,
+  Plus,
+  SlidersHorizontal,
+  Sparkles,
+  X,
 } from "lucide-react";
 import { RoadmapNode, type RoadmapNodePayload } from "./RoadmapNode";
 import { RoadmapEdge } from "./RoadmapEdge";
@@ -47,6 +51,83 @@ import type {
 
 const nodeTypes = { roadmapNode: RoadmapNode };
 const edgeTypes = { roadmapEdge: RoadmapEdge };
+
+type MobilePanel = "none" | "palette" | "properties" | "chat";
+
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < breakpoint);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [breakpoint]);
+  return isMobile;
+}
+
+function MobileSheet({
+  onClose,
+  title,
+  children,
+}: {
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="fixed inset-0 z-50 md:hidden">
+      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
+      <div className="absolute bottom-0 left-0 right-0 flex max-h-[75vh] flex-col rounded-t-2xl border-t border-border bg-card shadow-2xl">
+        <div className="flex items-center justify-between border-b border-border px-4 py-3">
+          <div className="flex items-center gap-2">
+            <div className="h-1 w-8 rounded-full bg-muted-foreground/30" />
+            <h3 className="text-sm font-semibold text-foreground">{title}</h3>
+          </div>
+          <button
+            onClick={onClose}
+            className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          >
+            <X size={16} />
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+function MobileBottomBar({
+  activePanel,
+  onToggle,
+}: {
+  activePanel: MobilePanel;
+  onToggle: (panel: MobilePanel) => void;
+}) {
+  const tabs: { id: MobilePanel; label: string; icon: typeof Plus }[] = [
+    { id: "palette", label: "Add", icon: Plus },
+    { id: "properties", label: "Properties", icon: SlidersHorizontal },
+    { id: "chat", label: "AI Chat", icon: Sparkles },
+  ];
+
+  return (
+    <div className="flex items-center justify-around border-t border-border bg-card px-2 py-1.5 md:hidden">
+      {tabs.map(({ id, label, icon: Icon }) => (
+        <button
+          key={id}
+          onClick={() => onToggle(activePanel === id ? "none" : id)}
+          className={`flex flex-col items-center gap-0.5 rounded-lg px-4 py-1.5 text-[10px] font-medium transition-colors ${
+            activePanel === id
+              ? "bg-primary/10 text-primary"
+              : "text-muted-foreground active:bg-accent"
+          }`}
+        >
+          <Icon size={18} />
+          {label}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 function createDefaultMeta(): RoadmapMeta {
   return {
@@ -105,6 +186,7 @@ export function RoadmapEditor({ editSlug }: { editSlug?: string }) {
   const router = useRouter();
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const { screenToFlowPosition } = useReactFlow();
+  const isMobile = useIsMobile();
 
   const [roadmapNodes, setRoadmapNodes] = useState<RoadmapNodeData[]>([]);
   const [roadmapEdges, setRoadmapEdges] = useState<RoadmapEdgeData[]>([]);
@@ -115,6 +197,7 @@ export function RoadmapEditor({ editSlug }: { editSlug?: string }) {
 
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
   const [selectedEdgeId, setSelectedEdgeId] = useState<string | null>(null);
+  const [mobilePanel, setMobilePanel] = useState<MobilePanel>("none");
 
   const [saveStatus, setSaveStatus] = useState<
     "idle" | "saving" | "saved" | "error"
@@ -172,15 +255,23 @@ export function RoadmapEditor({ editSlug }: { editSlug?: string }) {
     [setEdges]
   );
 
-  const onNodeClick = useCallback((_: React.MouseEvent, node: Node) => {
-    setSelectedNodeId(node.id);
-    setSelectedEdgeId(null);
-  }, []);
+  const onNodeClick = useCallback(
+    (_: React.MouseEvent, node: Node) => {
+      setSelectedNodeId(node.id);
+      setSelectedEdgeId(null);
+      if (isMobile) setMobilePanel("properties");
+    },
+    [isMobile]
+  );
 
-  const onEdgeClick = useCallback((_: React.MouseEvent, edge: Edge) => {
-    setSelectedEdgeId(edge.id);
-    setSelectedNodeId(null);
-  }, []);
+  const onEdgeClick = useCallback(
+    (_: React.MouseEvent, edge: Edge) => {
+      setSelectedEdgeId(edge.id);
+      setSelectedNodeId(null);
+      if (isMobile) setMobilePanel("properties");
+    },
+    [isMobile]
+  );
 
   const onPaneClick = useCallback(() => {
     setSelectedNodeId(null);
@@ -220,6 +311,24 @@ export function RoadmapEditor({ editSlug }: { editSlug?: string }) {
       setRoadmapNodes((prev) => [...prev, newNode]);
       setSelectedNodeId(newNode.id);
       setSelectedEdgeId(null);
+    },
+    [screenToFlowPosition]
+  );
+
+  const handleAddNode = useCallback(
+    (type: RoadmapNodeData["type"]) => {
+      const wrapper = reactFlowWrapper.current;
+      if (!wrapper) return;
+      const rect = wrapper.getBoundingClientRect();
+      const position = screenToFlowPosition({
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
+      });
+      const newNode = createDefaultNode(type, position);
+      setRoadmapNodes((prev) => [...prev, newNode]);
+      setSelectedNodeId(newNode.id);
+      setSelectedEdgeId(null);
+      setMobilePanel("none");
     },
     [screenToFlowPosition]
   );
@@ -411,21 +520,22 @@ export function RoadmapEditor({ editSlug }: { editSlug?: string }) {
   return (
     <div className="flex h-[calc(100vh-3.5rem)] flex-col">
       {/* Toolbar */}
-      <div className="flex items-center justify-between border-b border-border bg-card px-4 py-2">
-        <div className="flex items-center gap-2">
-          <h1 className="text-sm font-semibold text-foreground">
-            {editSlug ? "Edit Roadmap" : "Create Roadmap"}
+      <div className="flex items-center justify-between gap-2 border-b border-border bg-card px-3 py-2 md:px-4">
+        <div className="flex items-center gap-2 overflow-hidden">
+          <h1 className="shrink-0 text-sm font-semibold text-foreground">
+            {editSlug ? "Edit" : "Create"}
+            <span className="hidden sm:inline"> Roadmap</span>
           </h1>
           {meta.title && (
-            <span className="text-xs text-muted-foreground">
+            <span className="truncate text-xs text-muted-foreground">
               — {meta.title}
             </span>
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5 md:gap-2">
           {saveStatus === "error" && (
-            <span className="flex items-center gap-1 text-xs text-red-500">
+            <span className="hidden items-center gap-1 text-xs text-red-500 sm:flex">
               <AlertCircle size={12} />
               {errorMsg}
             </span>
@@ -433,43 +543,51 @@ export function RoadmapEditor({ editSlug }: { editSlug?: string }) {
           {saveStatus === "saved" && (
             <span className="flex items-center gap-1 text-xs text-emerald-500">
               <Check size={12} />
-              Saved
+              <span className="hidden sm:inline">Saved</span>
             </span>
           )}
 
           <button
             onClick={handleImport}
-            className="flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent"
+            className="flex items-center gap-1.5 rounded-md border border-border px-2 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent md:px-3"
+            title="Import"
           >
-            <Upload size={12} /> Import
+            <Upload size={12} />
+            <span className="hidden sm:inline">Import</span>
           </button>
           <button
             onClick={handleExport}
-            className="flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent"
+            className="flex items-center gap-1.5 rounded-md border border-border px-2 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent md:px-3"
+            title="Export"
           >
-            <Download size={12} /> Export
+            <Download size={12} />
+            <span className="hidden sm:inline">Export</span>
           </button>
           <button
             onClick={handlePreview}
-            className="flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent"
+            className="hidden items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent sm:flex"
+            title="Preview"
           >
-            <Eye size={12} /> Preview
+            <Eye size={12} />
+            <span className="hidden sm:inline">Preview</span>
           </button>
           <button
             onClick={handleSave}
             disabled={saveStatus === "saving"}
-            className="flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50"
+            className="flex items-center gap-1.5 rounded-md bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50 md:px-3"
           >
             <Save size={12} />
-            {saveStatus === "saving" ? "Saving..." : "Save"}
+            {saveStatus === "saving" ? "..." : "Save"}
           </button>
         </div>
       </div>
 
       {/* Main editor area */}
       <div className="flex flex-1 overflow-hidden">
-        <NodePalette />
+        {/* Desktop sidebar: Node palette */}
+        <NodePalette onAddNode={handleAddNode} />
 
+        {/* Canvas */}
         <div ref={reactFlowWrapper} className="flex-1 roadmap-editor">
           <ReactFlow
             nodes={nodes}
@@ -503,15 +621,18 @@ export function RoadmapEditor({ editSlug }: { editSlug?: string }) {
               color="var(--border)"
             />
             <Controls showInteractive={false} />
-            <MiniMap
-              nodeStrokeWidth={3}
-              pannable
-              zoomable
-              className="!bg-card !border-border"
-            />
+            {!isMobile && (
+              <MiniMap
+                nodeStrokeWidth={3}
+                pannable
+                zoomable
+                className="!bg-card !border-border"
+              />
+            )}
           </ReactFlow>
         </div>
 
+        {/* Desktop sidebar: Properties */}
         <PropertyPanel
           selectedNode={selectedNode}
           selectedEdge={selectedEdge}
@@ -523,6 +644,7 @@ export function RoadmapEditor({ editSlug }: { editSlug?: string }) {
           onUpdateMeta={setMeta}
         />
 
+        {/* Desktop sidebar: AI Chat */}
         <AIChatPanel
           currentNodes={roadmapNodes}
           currentEdges={roadmapEdges}
@@ -533,6 +655,57 @@ export function RoadmapEditor({ editSlug }: { editSlug?: string }) {
           onUpdateMeta={handleAIUpdateMeta}
         />
       </div>
+
+      {/* Mobile bottom bar */}
+      {isMobile && (
+        <MobileBottomBar
+          activePanel={mobilePanel}
+          onToggle={setMobilePanel}
+        />
+      )}
+
+      {/* Mobile sheets */}
+      {isMobile && mobilePanel === "palette" && (
+        <MobileSheet title="Add Node" onClose={() => setMobilePanel("none")}>
+          <NodePalette mobile onAddNode={handleAddNode} />
+        </MobileSheet>
+      )}
+
+      {isMobile && mobilePanel === "properties" && (
+        <MobileSheet
+          title={selectedNode ? "Edit Node" : selectedEdge ? "Edit Edge" : "Roadmap Settings"}
+          onClose={() => setMobilePanel("none")}
+        >
+          <PropertyPanel
+            mobile
+            selectedNode={selectedNode}
+            selectedEdge={selectedEdge}
+            meta={meta}
+            onUpdateNode={handleUpdateNode}
+            onDeleteNode={handleDeleteNode}
+            onUpdateEdge={handleUpdateEdge}
+            onDeleteEdge={handleDeleteEdge}
+            onUpdateMeta={setMeta}
+          />
+        </MobileSheet>
+      )}
+
+      {isMobile && mobilePanel === "chat" && (
+        <MobileSheet title="AI Assistant" onClose={() => setMobilePanel("none")}>
+          <div className="h-[60vh]">
+            <AIChatPanel
+              mobile
+              currentNodes={roadmapNodes}
+              currentEdges={roadmapEdges}
+              meta={meta}
+              onAddNodes={handleAIAddNodes}
+              onAddEdges={handleAIAddEdges}
+              onUpdateNodes={handleAIUpdateNodes}
+              onUpdateMeta={handleAIUpdateMeta}
+            />
+          </div>
+        </MobileSheet>
+      )}
     </div>
   );
 }

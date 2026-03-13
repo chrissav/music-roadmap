@@ -92,6 +92,7 @@ interface AIChatPanelProps {
   onAddEdges: (edges: RoadmapEdgeData[]) => void;
   onUpdateNodes: (nodes: RoadmapNodeData[]) => void;
   onUpdateMeta: (meta: Partial<Pick<RoadmapMeta, "title" | "description">>) => void;
+  mobile?: boolean;
 }
 
 const SUGGESTIONS = [
@@ -222,6 +223,7 @@ export function AIChatPanel({
   onAddEdges,
   onUpdateNodes,
   onUpdateMeta,
+  mobile,
 }: AIChatPanelProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
@@ -384,7 +386,7 @@ export function AIChatPanel({
     [input, sendMessage]
   );
 
-  if (collapsed) {
+  if (collapsed && !mobile) {
     return (
       <button
         onClick={() => setCollapsed(false)}
@@ -397,7 +399,13 @@ export function AIChatPanel({
   }
 
   return (
-    <div className="flex w-80 shrink-0 flex-col border-l border-border bg-card">
+    <div
+      className={
+        mobile
+          ? "flex flex-col h-full"
+          : "hidden w-80 shrink-0 flex-col border-l border-border bg-card md:flex"
+      }
+    >
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border px-3 py-2">
         <div className="flex items-center gap-2">
@@ -408,13 +416,15 @@ export function AIChatPanel({
             AI Assistant
           </span>
         </div>
-        <button
-          onClick={() => setCollapsed(true)}
-          className="rounded p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-          title="Collapse"
-        >
-          <ChevronDown size={14} />
-        </button>
+        {!mobile && (
+          <button
+            onClick={() => setCollapsed(true)}
+            className="rounded p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            title="Collapse"
+          >
+            <ChevronDown size={14} />
+          </button>
+        )}
       </div>
 
       {/* Provider & API Key */}
