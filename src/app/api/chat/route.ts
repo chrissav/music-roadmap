@@ -36,6 +36,7 @@ interface ContextNode {
 }
 
 interface ChatRequestBody {
+  apiKey?: string;
   messages: { role: "user" | "assistant"; content: string }[];
   currentNodes: ContextNode[];
   currentEdges: { id: string; source: string; target: string }[];
@@ -123,18 +124,22 @@ If the user is just chatting or asking a question (not requesting roadmap change
 
 export async function POST(req: NextRequest) {
   try {
-    const apiKey = process.env.GROQ_API_KEY || envLocal.GROQ_API_KEY;
+    const body: ChatRequestBody = await req.json();
+
+    const apiKey =
+      body.apiKey ||
+      process.env.GROQ_API_KEY ||
+      envLocal.GROQ_API_KEY;
+
     if (!apiKey) {
       return NextResponse.json(
         {
           error:
-            "GROQ_API_KEY not configured. Get a free key at https://console.groq.com/keys and add it to .env.local",
+            "No API key provided. Add your Groq API key in the chat panel to get started.",
         },
-        { status: 500 }
+        { status: 400 }
       );
     }
-
-    const body: ChatRequestBody = await req.json();
 
     const contextMessage = buildContextMessage(
       body.currentNodes,
