@@ -18,18 +18,50 @@ import {
 } from "lucide-react";
 import type { RoadmapNodeData, RoadmapEdgeData, RoadmapMeta } from "@/lib/types";
 
-const STORAGE_KEY = "music-roadmap-groq-key";
+type Provider = "groq" | "claude";
 
-function getSavedApiKey(): string {
-  if (typeof window === "undefined") return "";
-  return localStorage.getItem(STORAGE_KEY) ?? "";
+const PROVIDERS: { id: Provider; label: string; keyPrefix: string; keyUrl: string; keyLabel: string; description: string }[] = [
+  {
+    id: "groq",
+    label: "Groq",
+    keyPrefix: "gsk_",
+    keyUrl: "https://console.groq.com/keys",
+    keyLabel: "Free — fast, good for quick drafts",
+    description: "Llama 3.3 70B",
+  },
+  {
+    id: "claude",
+    label: "Claude",
+    keyPrefix: "sk-ant-",
+    keyUrl: "https://console.anthropic.com/settings/keys",
+    keyLabel: "$5 free trial — richer, detailed content",
+    description: "Claude Sonnet 4",
+  },
+];
+
+function getStorageKey(provider: Provider) {
+  return `music-roadmap-${provider}-key`;
 }
 
-function saveApiKey(key: string) {
+function getSavedApiKey(provider: Provider): string {
+  if (typeof window === "undefined") return "";
+  return localStorage.getItem(getStorageKey(provider)) ?? "";
+}
+
+function getSavedProvider(): Provider {
+  if (typeof window === "undefined") return "groq";
+  return (localStorage.getItem("music-roadmap-provider") as Provider) || "groq";
+}
+
+function saveProvider(provider: Provider) {
+  localStorage.setItem("music-roadmap-provider", provider);
+}
+
+function saveApiKey(provider: Provider, key: string) {
   if (key) {
-    localStorage.setItem(STORAGE_KEY, key);
+    localStorage.setItem(getStorageKey(provider), key);
   } else {
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(getStorageKey(provider));
   }
 }
 
@@ -70,91 +102,114 @@ const SUGGESTIONS = [
 ];
 
 function APIKeySection({
+  provider,
   apiKey,
+  onProviderChange,
   onSave,
   onClear,
 }: {
+  provider: Provider;
   apiKey: string;
+  onProviderChange: (p: Provider) => void;
   onSave: (key: string) => void;
   onClear: () => void;
 }) {
   const [draft, setDraft] = useState("");
   const [showKey, setShowKey] = useState(false);
-
-  if (apiKey) {
-    const masked = apiKey.slice(0, 8) + "..." + apiKey.slice(-4);
-    return (
-      <div className="border-b border-border px-3 py-2">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-[10px] text-emerald-500">
-            <Key size={10} />
-            <span className="font-medium">API key saved</span>
-          </div>
-          <button
-            onClick={onClear}
-            className="flex items-center gap-1 rounded px-1.5 py-0.5 text-[10px] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-          >
-            <Trash2 size={9} />
-            Remove
-          </button>
-        </div>
-        <p className="mt-0.5 font-mono text-[10px] text-muted-foreground">
-          {masked}
-        </p>
-      </div>
-    );
-  }
+  const providerInfo = PROVIDERS.find((p) => p.id === provider)!;
 
   return (
     <div className="border-b border-border px-3 py-2.5">
-      <div className="mb-1.5 flex items-center gap-1.5">
-        <Key size={10} className="text-muted-foreground" />
-        <span className="text-[10px] font-medium text-foreground">
-          Groq API Key
-        </span>
-        <a
-          href="https://console.groq.com/keys"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-auto flex items-center gap-0.5 text-[10px] text-primary hover:underline"
-        >
-          Get free key <ExternalLink size={8} />
-        </a>
-      </div>
-      <div className="flex gap-1.5">
-        <div className="relative flex-1">
-          <input
-            type={showKey ? "text" : "password"}
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-            placeholder="gsk_..."
-            className="w-full rounded border border-border bg-background px-2 py-1.5 pr-7 font-mono text-[10px] text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
-          />
+      {/* Provider toggle */}
+      <div className="mb-2 flex rounded-md border border-border bg-background p-0.5">
+        {PROVIDERS.map((p) => (
           <button
-            type="button"
-            onClick={() => setShowKey(!showKey)}
-            className="absolute right-1.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+            key={p.id}
+            onClick={() => onProviderChange(p.id)}
+            className={`flex-1 rounded-sm px-2 py-1 text-[10px] font-medium transition-colors ${
+              provider === p.id
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
           >
-            {showKey ? <EyeOff size={10} /> : <Eye size={10} />}
+            <div>{p.label}</div>
+            <div className={`font-normal ${provider === p.id ? "text-primary-foreground/70" : "text-muted-foreground/70"}`}>
+              {p.description}
+            </div>
           </button>
-        </div>
-        <button
-          onClick={() => {
-            if (draft.trim()) {
-              onSave(draft.trim());
-              setDraft("");
-            }
-          }}
-          disabled={!draft.trim()}
-          className="shrink-0 rounded bg-primary px-2.5 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-40"
-        >
-          Save
-        </button>
+        ))}
       </div>
-      <p className="mt-1.5 text-[10px] leading-relaxed text-muted-foreground">
-        Your key stays in your browser and is never stored on our server.
-        It&apos;s only used to call the Groq API.
-      </p>
+
+      {apiKey ? (
+        <div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5 text-[10px] text-emerald-500">
+              <Key size={10} />
+              <span className="font-medium">{providerInfo.label} key saved</span>
+            </div>
+            <button
+              onClick={onClear}
+              className="flex items-center gap-1 rounded px-1.5 py-0.5 text-[10px] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            >
+              <Trash2 size={9} />
+              Remove
+            </button>
+          </div>
+          <p className="mt-0.5 font-mono text-[10px] text-muted-foreground">
+            {apiKey.slice(0, 8)}...{apiKey.slice(-4)}
+          </p>
+        </div>
+      ) : (
+        <div>
+          <div className="mb-1.5 flex items-center gap-1.5">
+            <Key size={10} className="text-muted-foreground" />
+            <span className="text-[10px] font-medium text-foreground">
+              {providerInfo.label} API Key
+            </span>
+            <a
+              href={providerInfo.keyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-auto flex items-center gap-0.5 text-[10px] text-primary hover:underline"
+            >
+              Get key <ExternalLink size={8} />
+            </a>
+          </div>
+          <div className="flex gap-1.5">
+            <div className="relative flex-1">
+              <input
+                type={showKey ? "text" : "password"}
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+                placeholder={`${providerInfo.keyPrefix}...`}
+                className="w-full rounded border border-border bg-background px-2 py-1.5 pr-7 font-mono text-[10px] text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
+              />
+              <button
+                type="button"
+                onClick={() => setShowKey(!showKey)}
+                className="absolute right-1.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              >
+                {showKey ? <EyeOff size={10} /> : <Eye size={10} />}
+              </button>
+            </div>
+            <button
+              onClick={() => {
+                if (draft.trim()) {
+                  onSave(draft.trim());
+                  setDraft("");
+                }
+              }}
+              disabled={!draft.trim()}
+              className="shrink-0 rounded bg-primary px-2.5 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-40"
+            >
+              Save
+            </button>
+          </div>
+          <p className="mt-1.5 text-[10px] leading-relaxed text-muted-foreground">
+            {providerInfo.keyLabel}. Your key stays in your browser only.
+          </p>
+        </div>
+      )}
     </div>
   );
 }
@@ -172,12 +227,15 @@ export function AIChatPanel({
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
+  const [provider, setProvider] = useState<Provider>("groq");
   const [apiKey, setApiKey] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
-    setApiKey(getSavedApiKey());
+    const saved = getSavedProvider();
+    setProvider(saved);
+    setApiKey(getSavedApiKey(saved));
   }, []);
 
   useEffect(() => {
@@ -186,21 +244,31 @@ export function AIChatPanel({
     }
   }, [messages]);
 
-  const handleSaveKey = useCallback((key: string) => {
-    saveApiKey(key);
-    setApiKey(key);
+  const handleProviderChange = useCallback((p: Provider) => {
+    setProvider(p);
+    saveProvider(p);
+    setApiKey(getSavedApiKey(p));
   }, []);
 
+  const handleSaveKey = useCallback(
+    (key: string) => {
+      saveApiKey(provider, key);
+      setApiKey(key);
+    },
+    [provider]
+  );
+
   const handleClearKey = useCallback(() => {
-    saveApiKey("");
+    saveApiKey(provider, "");
     setApiKey("");
-  }, []);
+  }, [provider]);
 
   const sendMessage = useCallback(
     async (text: string) => {
       if (!text.trim() || loading) return;
 
       if (!apiKey) {
+        const info = PROVIDERS.find((p) => p.id === provider)!;
         setMessages((prev) => [
           ...prev,
           {
@@ -211,8 +279,7 @@ export function AIChatPanel({
           {
             id: `msg-${Date.now() + 1}`,
             role: "assistant" as const,
-            content:
-              "Please add your Groq API key above to use the AI assistant. You can get a free key at console.groq.com/keys",
+            content: `Please add your ${info.label} API key above to use the AI assistant.`,
             error: true,
           },
         ]);
@@ -238,6 +305,7 @@ export function AIChatPanel({
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            provider,
             apiKey,
             messages: history,
             currentNodes: currentNodes.map((n) => ({
@@ -303,7 +371,7 @@ export function AIChatPanel({
       }
       setLoading(false);
     },
-    [loading, messages, apiKey, currentNodes, currentEdges, meta, onAddNodes, onAddEdges, onUpdateNodes, onUpdateMeta]
+    [loading, messages, provider, apiKey, currentNodes, currentEdges, meta, onAddNodes, onAddEdges, onUpdateNodes, onUpdateMeta]
   );
 
   const handleKeyDown = useCallback(
@@ -349,9 +417,11 @@ export function AIChatPanel({
         </button>
       </div>
 
-      {/* API Key */}
+      {/* Provider & API Key */}
       <APIKeySection
+        provider={provider}
         apiKey={apiKey}
+        onProviderChange={handleProviderChange}
         onSave={handleSaveKey}
         onClear={handleClearKey}
       />
